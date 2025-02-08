@@ -1,0 +1,61 @@
+<meta charset="UTF-8">
+<script>
+    /*
+    PROBLEMA: PESQUISA DE IDADE
+    Foi feita uma pesquisa entre os habitantes de uma região. Foram coletados os dados de idade, sexo (M/F) e salário. Faça um programa que calcule e mostre:
+
+    a) A média dos salários do grupo;
+    b) A maior e a menor idade do grupo;
+    c) A quantidade de mulheres na região;
+    d) A idade e o sexo da pessoa que possui o menor salário;
+
+    Finalize a entrada de dados ao ser digitada uma idade negativa.
+    */
+
+    //ENTRADA
+    let totalSalarios = 0;
+    let contadorPessoas = 0;
+    let maiorIdade = 0;
+    let menorIdade = Infinity;
+    let quantidadeMulheres = 0;
+    let menorSalario = Infinity;
+    let idadeMenorSalario;
+    let sexoMenorSalario;
+    let idade;
+
+    //PROCESSAMENTO
+    do {
+        idade = parseInt(prompt("Digite a idade (ou um número negativo para sair):"));
+        if (idade < 0) break;
+
+        let sexo = prompt("Digite o sexo (M/F):").toUpperCase();
+        let salario = parseFloat(prompt("Digite o salário:"));
+
+        totalSalarios += salario;
+        contadorPessoas++;
+
+        if (idade > maiorIdade) maiorIdade = idade;
+        if (idade < menorIdade) menorIdade = idade;
+
+        if (sexo === 'F') quantidadeMulheres++;
+
+        if (salario < menorSalario) {
+            menorSalario = salario;
+            idadeMenorSalario = idade;
+            sexoMenorSalario = sexo;
+        }
+    } while (idade >= 0);
+
+    let mediaSalarios = contadorPessoas > 0 ? (totalSalarios / contadorPessoas).toFixed(2) : 0;
+
+    //SAÍDA
+    alert(
+        "RESULTADOS:\n" +
+        "Média dos salários: R$" + mediaSalarios + "\n" +
+        "Maior idade: " + maiorIdade + " anos\n" +
+        "Menor idade: " + menorIdade + " anos\n" +
+        "Quantidade de mulheres: " + quantidadeMulheres + "\n" +
+        "Pessoa com menor salário: " + idadeMenorSalario + " anos, Sexo: " + sexoMenorSalario
+    );
+
+</script>

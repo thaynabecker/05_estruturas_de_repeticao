@@ -1,0 +1,87 @@
+<meta charset="UTF-8">
+<script>
+    /*
+    PROBLEMA: URNA ELETRÔNICA
+    Faça um programa que simule a urna eletrônica.
+    A tela a ser apresentada deverá ser da seguinte forma:
+    As opções são:
+    1. Candidato Joãozinho
+    2. Candidato Mariazinha
+    3. Nulo
+    4. Branco
+    Entre com o seu voto:
+
+    O programa deverá ler os votos dos eleitores e, quando for entrado o número 0, apresentar as seguintes
+    informações:
+    a) O número de votos de cada candidato;
+    b) A porcentagem de votos nulos;
+    c) A porcentagem de votos brancos;
+    d) O candidato vencedor.
+    */
+
+    //ENTRADA
+    let votosJoaozinho = 0;
+    let votosMariazinha = 0;
+    let votosNulo = 0;
+    let votosBranco = 0;
+    let totalVotos = 0;
+    let voto;
+
+    //PROCESSAMENTO
+    do {
+        voto = parseInt(prompt(
+            "As opções são:\n" +
+            "1. Candidato Joãozinho\n" +
+            "2. Candidato Mariazinha\n" +
+            "3. Nulo\n" +
+            "4. Branco\n" +
+            "0. Encerrar votação\n" +
+            "Entre com o seu voto:"));
+
+        switch (voto) {
+            case 1:
+                votosJoaozinho++;
+                break;
+            case 2:
+                votosMariazinha++;
+                break;
+            case 3:
+                votosNulo++;
+                break;
+            case 4:
+                votosBranco++;
+                break;
+            case 0:
+                break;
+            default:
+                alert("Voto inválido! Tente novamente.");
+                continue;
+        }
+
+        if (voto !== 0) {
+            totalVotos++;
+        }
+    } while (voto !== 0);
+
+    // Cálculo das porcentagens
+    let percentualNulo = (votosNulo / totalVotos) * 100 || 0;
+    let percentualBranco = (votosBranco / totalVotos) * 100 || 0;
+
+    // Determinar o vencedor
+    let vencedor = "Empate";
+    if (votosJoaozinho > votosMariazinha) {
+        vencedor = "Joãozinho";
+    } else if (votosMariazinha > votosJoaozinho) {
+        vencedor = "Mariazinha";
+    }
+
+    //SAÍDA
+    document.write(
+        "RESULTADO:\n" +
+        "Joãozinho: " + votosJoaozinho + " votos\n" +
+        "Mariazinha: " + votosMariazinha + " votos\n" +
+        "Nulos: " + votosNulo + " votos (" + percentualNulo.toFixed(2) + "%)\n" +
+        "Brancos: " + votosBranco + " votos (" + percentualBranco.toFixed(2) + "%)\n" +
+        "Vencedor: " + vencedor
+    );
+</script>

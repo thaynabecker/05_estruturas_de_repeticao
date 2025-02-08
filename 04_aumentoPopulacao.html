@@ -1,0 +1,25 @@
+<meta charset="UTF-8">
+<script>
+    /*
+    PROBLEMA: AUMENTO DA POPULAÇÃO
+    Supondo que a população de um país A seja da ordem de 80.000 habitantes com uma taxa anual de crescimento de 3% e que a população de B seja 200.000 habitantes com uma taxa de crescimento de 1.5%. Faça um programa que calcule e escreva o número de anos necessários para que a população do país A ultrapasse ou iguale a população do país B, mantidas as taxas de crescimento.
+    */
+
+    //ENTRADA
+    let populacaoA = 80000;
+    let populacaoB = 200000; 
+    let taxaCrescimentoA = 0.03; 
+    let taxaCrescimentoB = 0.015; 
+    let anos = 0; 
+
+    //PROCESSAMENTO
+    while (populacaoA < populacaoB) {
+        populacaoA += populacaoA * taxaCrescimentoA; 
+        populacaoB += populacaoB * taxaCrescimentoB; 
+        anos++; 
+    }
+
+    //SAÍDA
+    alert(`A população do país A vai ultrapassar a do país B em ${anos} anos.`);
+
+</script>
